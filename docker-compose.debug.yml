@@ -6,16 +6,14 @@ services:
     build:
       context: .
       dockerfile: Dockerfile.debug
-    environment:
-      DEMO_REDIS: redis
     ports:
       - "3000:3000"
-      - "2345:2345"
+      - "8000:8000"
     security_opt:
       - "seccomp:unconfined"
-    command: /go/bin/dlv debug --headless --log --listen=:2345 --api-version=2
+    command: /go/bin/dlv debug --headless --log --listen=:8000 --api-version=2
     volumes:
       - .:/go/src/app
 
-  redis:
-    image: redis
+  mux:
+    image: benst/go-mux:latest

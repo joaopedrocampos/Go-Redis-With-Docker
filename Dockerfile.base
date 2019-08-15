@@ -5,4 +5,4 @@ COPY . .
 RUN apk --update add --no-cache --virtual dependency git \
     && go get -d -v ./... \
     && apk del dependency
-EXPOSE 3000
+EXPOSE 8000
