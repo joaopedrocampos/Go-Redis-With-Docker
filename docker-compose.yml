@@ -1,0 +1,15 @@
+version: '2.1'
+
+services:
+  go_coyote:
+    image: go_coyote
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DEMO_REDIS: redis
+    ports:
+      - 3000:3000
+
+  redis:
+    image: redis
